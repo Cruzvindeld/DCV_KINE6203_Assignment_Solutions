@@ -21,12 +21,13 @@
 %%%%%%%%%%%%%%%%%%%%%%% Part 1  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % 1. Set the url of the matlab documentation to a variable called helpURL
-help= 'https://www.mathworks.com/help/matlab/index.html'
+help= 'https://www.mathworks.com/help/matlab/index.html';
 
 
 % 2. What does the command 'clear all' do?
-%
-% Answer: (Delete this text and write your answer)
+% 
+% Answer: (removes all variables and functions from current work space freeing
+% up memory but also removing debugging breakpoints)
 %
 
 
@@ -38,10 +39,13 @@ averageAnswer= mean([1 7 21 32 67 32453]);
 
 % 4. What command would you type to see a list of all installed toolboxes?
 
-        %<- command goes here
+        %ver
+
 
 % 5. Write some commands that would return a list of all of the available 
 % functions in the image processing toolbox? 
+doc images
+
 
 
 
@@ -52,7 +56,9 @@ x = linspace(-2*pi,2*pi);
 y = sin(x);
 
 figure
-        %<- command goes here
+        % plot(x,y);
+
+
 
         
 
@@ -61,14 +67,15 @@ figure
 % this function do and how would you use it?
 
 %
-% Answer: 
-%
+% Answer: aov= anova (y)
+% compares the mean (average) of three or more groups.I could use this to
+% compare the data between a control group with two experimental groups.
 
 % 8. What are the 2 major types of loops that MATLAB supports? What is the
 % difference between them?
 
 %
-% Answer: 
+% Answer: for loops and while loops
 % 
 
 
@@ -76,7 +83,7 @@ figure
 % an answer. 
 
 %
-% Answer: 
+% Answer: not a number, when a mathematical operation is undefined
 %
 
 
@@ -86,13 +93,13 @@ figure
 % any of the values in A.
 
 A = [1 2 3 2 1 NaN 1 2 3 NaN];
-S = sum(A)
-
+S = sum(A);
+x= sum (A, "omitnan");
 
 % 11. I used to love playing the game minesweeper. Is there a way that I
 % could play a similar game on Matlab? Write the command that would launch
 % the game if so. 
-
+xpbombs
 
 
 
@@ -100,15 +107,15 @@ S = sum(A)
 % create a new variable called ageLessTwo and subtract two from the value of the
 % myAge variable. Create a third variable called agePlusOne and add one to 
 % the value of the myAge variable.
-
-
+myAge= 24;
+ageLessTwo = (myAge -2);
+agePlusOne = (myAge +1);
 
 % 13. Use the built-in function namelengthmax to find out the maximum number of
 % characters that you can have in an identifier name under your version of
 % MATLAB. Assign the value to a variable called maxNameLength.
 
-
-
+maxNameLength =namelengthmax;
 
 % 14. You need to convert some weight values from metric to standard units. 
 % Create two appropriately named variables to store the original weight in 
@@ -117,6 +124,13 @@ S = sum(A)
 
 originalWeightkg = 100;
 % Add your code on the next line
+originalWeightlbs= (100 * 2.20462);
+originalWeightounces= (originalWeightkg * 35.274);
+who 
+whos 
+clear originalWeightKg
+who 
+whos
 
 
 
@@ -124,12 +138,16 @@ originalWeightkg = 100;
 % variable to the type int32 and store the result in a new variable (hint: this is known
 % as casting in computer programming). Use whos to check your result. 
 
-
-
+x= 0.05;
+convert = int32(x);
+intergerNumber = int32(x);
+whos
 
 % 16. Create a variable called weightInLBs to store a weight in pounds. Convert this to 
 % kilograms using an appropriate calculation or function and assign the result to a variable weightInKgs.
 
+weightInLBs= 110;
+weightInKgs= (weightInLBs/2.20462);
 
 
 
@@ -137,7 +155,8 @@ originalWeightkg = 100;
 % Convert this to degrees Celsius (C) using an appropriate 
 % calculation and store the result in a variable cTemp.
 
-
+fTemp= 32;
+cTemp= (fTemp -32)* 5/9;
 
 
 % 19. Using the colon operator, create the following row vectors:
@@ -146,21 +165,22 @@ originalWeightkg = 100;
 % 8 6 4 2
 % Store your results with variable names vecA, vecB and vecC respectively.
 
-
-
+vecA= 2:1:7;
+vecB= 1.1000:1.3000:1.5000:1.7000;
+vecC = 8:-2:2;
 
 % 20. Give a MATLAB expression that would create a vector 
 % (assigned to a variable called vec) of 50 elements that range, equally spaced, 
 % from 0 to 2pi. 
 
-
+vec= linspace(0,2*pi,50);
 
 
 % 21. Using the colon operator and the transpose operator, 
 % create a column vector that has the values -1 to 1 in steps of 0.5.
 % Assign your answer to a variable called colVec.
 
-
+colVec= (-1:0.5:1)'
 
 
 % 22. Create a variable called rows that is a random integer in the inclusive range 
@@ -169,7 +189,9 @@ originalWeightkg = 100;
 % dimensions given by the values of rows and cols. The resultMat should
 % change each time you execute your code. 
 
-
+rows= randi([1 5]);
+cols = randi([1 5]);
+resultMat = zeros([rows, cols]);
 
 
 % 23. Create a vector of five random integers, each in the inclusive range 
