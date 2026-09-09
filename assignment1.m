@@ -180,7 +180,7 @@ vec= linspace(0,2*pi,50);
 % create a column vector that has the values -1 to 1 in steps of 0.5.
 % Assign your answer to a variable called colVec.
 
-colVec= (-1:0.5:1)'
+colVec= (-1:0.5:1)';
 
 
 % 22. Create a variable called rows that is a random integer in the inclusive range 
@@ -198,19 +198,21 @@ resultMat = zeros([rows, cols]);
 % from -10 to 10 assigned to a variable named originalVec. Perform each of 
 % the following on the original vector and store your results in appropriately 
 % named variables. (you should have a seperate line of code for each)
+originalVec= 5 * randi([-10 10]); 
 
 % - subtract 3 from each element
+subtractthree= (originalVec -3);
 
 
 % - count how many are positive
 
-
+countpositive= sum(originalVec>0);
 % - get the absolute value of each element
 
-
+abs= abs(originalVec);
 
 % - find the maximum.
-
+maxValue= max(originalVec);
 
 
 % 24. Write some code that will calculate the area of a trapezoid. Create
@@ -218,7 +220,11 @@ resultMat = zeros([rows, cols]);
 % result of your calculation in a variable called trapArea. Comment your
 % code so that another user can understand what your code does. 
 
-
+base1= 7;
+base2= 10;
+height= 5;
+% Calculate the area of the the trapezoid
+trapArea= ((base1 + base2) * height) / 2;
 
 
 
@@ -231,7 +237,9 @@ resultMat = zeros([rows, cols]);
 % Write some code that prompts the user to input total revenues and total 
 % costs and then calculates the ROI and stores the value in a variable called
 % ROI.
-
+totalRevenues= input('Enter total revenues: ');
+totalCosts = input('Enter total costs: ');
+ROI = (totalRevenues - totalCosts) / totalCosts * 100;
 
 
 
@@ -246,8 +254,7 @@ resultMat = zeros([rows, cols]);
 % part 2, make sure you click the Run Section button vs the Run button) 
 
 %%% Enter the code for your program below this line
-
-
+disp= 'Hello World'
 
 
 
