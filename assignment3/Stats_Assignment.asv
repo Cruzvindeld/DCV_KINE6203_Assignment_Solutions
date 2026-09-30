@@ -1,0 +1,72 @@
+% Load the data from the NFL Combine and pro day data file
+% using the read table tool.
+data= readtable('NFL Combine and pro day data (1987 - 2021).csv');
+
+% View a summary of the data in the table using the summary 
+% function. 
+summary(data)
+% Calculate summary statistics for the timed variables in the
+% database using appropriate functions. (Shuttle, 40, 3 cone)
+
+shuttle= data.Shuttle;
+fortyyard= data.x40Yard;
+threecone= data.x3Cone;
+%mean for variables
+mean(shuttle,'omitnan')
+mean(fortyyard,'omitnan')
+mean(threecone,'omitnan')
+%median for variables 
+median(shuttle,'omitnan')
+median(fortyyard,'omitnan')
+median(threecone,'omitnan')
+%mode for variables
+mode(shuttle)
+mode(fortyyard(~isnan(fortyyard)))
+mode(threecone)
+
+
+
+% Create a histogram showing all three distributions for these
+% timed variables. Make sure to label your figure and add a legend. 
+figure;
+histogram(shuttle,Normalization="pdf")
+hold on;
+histogram(fortyyard,Normalization="pdf")
+histogram(threecone,Normalization="pdf")
+xlabel('time')
+ylabel('number of obervations')
+title('tle("Frequency of time test: NFL')
+legend('shuttle','40 Yard', '3 Cone', 'loaction','best')
+grid on 
+hold off
+
+
+% Create a scatter plot in a new figure showing the relationship 
+% between 40 yard dash performance and shuttle time).
+figure;
+scatter(fortyyard,shuttle,marker='*', markeredgecolor='magenta')
+xlabel('Forty performance')
+ylabel('Shuttle time')
+title('Forty performance vs shuttle time: NFL' )
+
+
+% Calculate the correlation coefficient between these two variables.
+rvalue= corr(fortyyard, shuttle, "Rows","complete")
+disp(rvalue)
+
+
+% If your correlation coefficient indicates a strong relationship,
+% fit a linear model to your data and calculate the coefficient of
+% variation (r-squared). Plot your model on your scatterplot. 
+LinearModel=fitlm(fortyyard,shuttle);
+hold on 
+plot(LinearModel)
+xlabel('Forty performance')
+ylabel('Shuttle time')
+title('Forty performance vs shuttle time: NFL')
+hold off
+
+% Run a t-test to determine if there is a difference in means between
+% the 40 yard dash and the shuttle run. 
+[h,p,ci,stats]=ttest();
+
